@@ -12,3 +12,10 @@ python-dotenv
 
 # Optional: type hints and backported typing features
 typing_extensions
+ # Core LLM SDK
+-google-generativeai
++requests
+
+ # Math solving
+ sympy
+
