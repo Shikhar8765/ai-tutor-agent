@@ -4,9 +4,10 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# Load API key
+# Load API key and strip whitespace/newlines
 load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta2/models/chat-bison-001:generateMessage"
 
 def generate_response(prompt: str) -> str:
