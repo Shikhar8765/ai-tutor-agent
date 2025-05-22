@@ -1,7 +1,7 @@
 # Gemini SDK
-google-generativeai
+google-genai
 
-# HTTP client (if you need it elsewhere)
+# HTTP client (for other needs)
 requests
 
 # Math solving

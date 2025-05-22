@@ -1,24 +1,24 @@
 # utils/llm.py
 
 import os
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
-# 1) Load & clean API key
+# Load & clean API key
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY", "").strip()
-genai.configure(api_key=api_key)
+client = genai.Client(api_key=api_key)
 
-# 2) Pick a model you have access to (e.g., "gemini-2.0-flash" or "gemini-pro")
+# Choose a Gemini model you have access to:
 MODEL = "gemini-2.0-flash"
 
 def generate_response(prompt: str) -> str:
     try:
-        # Use the chat API under the hood
-        response = genai.chat.completions.create(
+        # Use the generate_content endpoint
+        response = client.models.generate_content(
             model=MODEL,
-            messages=[{"author": "user", "content": prompt}]
+            contents=[prompt]
         )
-        return response.choices[0].message.content.strip()
+        return response.text.strip()
     except Exception as e:
         return f"LLM Error: {e}"
