@@ -1,0 +1,14 @@
+# Core LLM SDK
+google-generativeai
+
+# Math solving
+sympy
+
+# Web interface
+streamlit
+
+# Environment variable management
+python-dotenv
+
+# Optional: type hints and backported typing features
+typing_extensions
