@@ -1,5 +1,5 @@
-# Core LLM SDK
-google-generativeai
+# HTTP client for Gemini REST calls
+requests
 
 # Math solving
 sympy
@@ -12,10 +12,3 @@ python-dotenv
 
 # Optional: type hints and backported typing features
 typing_extensions
- # Core LLM SDK
--google-generativeai
-+requests
-
- # Math solving
- sympy
-
