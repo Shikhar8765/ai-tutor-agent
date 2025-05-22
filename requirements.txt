@@ -1,4 +1,7 @@
-# HTTP client for Gemini REST calls
+# Gemini SDK
+google-generativeai
+
+# HTTP client (if you need it elsewhere)
 requests
 
 # Math solving
@@ -7,8 +10,8 @@ sympy
 # Web interface
 streamlit
 
-# Environment variable management
+# Env var loader
 python-dotenv
 
-# Optional: type hints and backported typing features
+# Optional: type hints
 typing_extensions

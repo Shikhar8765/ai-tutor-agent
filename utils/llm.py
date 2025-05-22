@@ -1,31 +1,24 @@
 # utils/llm.py
 
 import os
-import requests
+import google.generativeai as genai
 from dotenv import load_dotenv
 
-# Load & clean API key
+# 1) Load & clean API key
 load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY", "").strip().lstrip('=')
+api_key = os.getenv("GEMINI_API_KEY", "").strip()
+genai.configure(api_key=api_key)
 
-# Chat endpoint URL
-CHAT_URL = (
-    "https://generativelanguage.googleapis.com/v1beta2/"
-    "models/chat-bison-001:generateMessage"
-    f"?key={API_KEY}"
-)
+# 2) Pick a model you have access to (e.g., "gemini-2.0-flash" or "gemini-pro")
+MODEL = "gemini-2.0-flash"
 
 def generate_response(prompt: str) -> str:
     try:
-        payload = {
-            "prompt": {
-                "messages": [
-                    {"author": "user", "content": prompt}
-                ]
-            }
-        }
-        resp = requests.post(CHAT_URL, json=payload, timeout=15)
-        resp.raise_for_status()
-        return resp.json()["candidates"][0]["content"].strip()
+        # Use the chat API under the hood
+        response = genai.chat.completions.create(
+            model=MODEL,
+            messages=[{"author": "user", "content": prompt}]
+        )
+        return response.choices[0].message.content.strip()
     except Exception as e:
         return f"LLM Error: {e}"
