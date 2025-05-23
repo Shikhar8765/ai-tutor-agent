@@ -1,17 +1,6 @@
-# Gemini SDK
-google-genai
-
-# HTTP client (for other needs)
+google-generativeai>=0.3.1
 requests
-
-# Math solving
 sympy
-
-# Web interface
 streamlit
-
-# Env var loader
 python-dotenv
-
-# Optional: type hints
 typing_extensions
